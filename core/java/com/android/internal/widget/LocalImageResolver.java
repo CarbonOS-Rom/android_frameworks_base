@@ -245,10 +245,9 @@ public class LocalImageResolver {
             });
 
         // ImageDecoder documentation is misleading a bit - it'll throw NotFoundException
-        // in some cases despite it not saying so. We also throw a RuntimeException if the
-        // image size is unreasonable (see checkHeader).
-        } catch (IOException | RuntimeException e) {
-            Log.d(TAG, "Couldn't use ImageDecoder for drawable, falling back to non-resized load.");
+        // in some cases despite it not saying so.
+        } catch (IOException | Resources.NotFoundException e) {
+            //Log.d(TAG, "Couldn't use ImageDecoder for drawable, falling back to non-resized load.");
             return null;
         }
     }
